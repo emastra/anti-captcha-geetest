@@ -72,7 +72,7 @@ Apify.main(async () => {
     // if (input.websiteCookies)
 
     if (proxyType || proxyIPAddress || proxyPort || proxyLogin || proxyPass) {
-        if (proxyType && proxyIPAddress && proxyPort)
+        if (!proxyType || !proxyIPAddress || !proxyPort)
             throw new Error('If you want to provide proxy, "proxyType", "proxyIPAddress" and "proxyPort" are required.');
 
         anticaptcha.setProxyType(proxyType);
