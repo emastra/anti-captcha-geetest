@@ -5,8 +5,6 @@ const anti_captcha = require('./anticaptcha');
 
 Apify.main(async () => {
     const input = await Apify.getInput();
-    log.info('Input:');
-    console.log(input);
 
     if (!input) throw new Error('Input must be provided!');
     if (!input.anticaptchaToken) throw new Error('Your anti-captcha token must be provided!');
