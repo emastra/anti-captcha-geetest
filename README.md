@@ -14,8 +14,8 @@ More info at [anti-captcha.com](https://anti-captcha.com/mainpage).
 | ----- | ---- | ----------- |
 | anticaptchaToken | string | (REQUIRED) your anti-captcha.com token |
 | websiteURL | string | (REQUIRED) the target page URL |
-| gt | string | (REQUIRED) gt key obtained from the target page HTML |
-| challenge | string | (REQUIRED) challenge key obtained from the target page HTML |
+| gt | string | (REQUIRED) gt key taken from the target page HTML |
+| challenge | string | (REQUIRED) challenge key taken from the target page HTML |
 | serverSubdomain | string | There are some custom implementations of GeeTest which use dedicated API subdomain. In this case simply specify this subdomain here. |
 | userAgent | string | if needed, specify the userAgent here  |
 | proxyType | string | if needed, proxy address protocol (http or https) |
@@ -48,7 +48,7 @@ console.log('Received result:', run.output.body);
 
 ### Output
 The output will include the solution keys.
-These solution keys must be sent to the target page through a http POST request.
+To finally solve the captcha, these solution keys must be sent to the target page through a http POST request.
 
 ### Open an issue
 If you find any bug, please create an issue on the actor [Github page](https://github.com/emastra/anti-captcha-geetest).
