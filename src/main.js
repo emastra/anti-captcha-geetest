@@ -1,35 +1,7 @@
 const Apify = require('apify');
 const { log } = Apify.utils;
-// const anticaptcha = require('./anticaptcha');
-// https://nodejs.org/dist/latest-v8.x/docs/api/util.html#util_util_promisify_original
 const util = require('util');
-
-/*
-
-currentLocation
-gt
-challenge
-ServerSubdomain O
-
-//
-
-setWebsiteURL(currentLocation);
-setWebsiteKey(gt);
-setWebsiteChallenge(challenge);
-
-
-setGeetestApiServerSubdomain('api-na.geetest.com');
-setProxyType("http");
-setProxyAddress('52.21.149.133');
-setProxyPort(proxyPort);
-setProxyLogin(proxyLogin);
-setProxyPassword(proxyPass);
-
-setUserAgent(userAgent);
-
-
-
-*/
+const anti_captcha = require('./anticaptcha');
 
 Apify.main(async () => {
     const input = await Apify.getInput();
@@ -54,7 +26,7 @@ Apify.main(async () => {
         proxyPass,
     } = input;
 
-    const anticaptcha = require('./anticaptcha')(input.anticaptchaToken);
+    const anticaptcha = anti_captcha(input.anticaptchaToken);
 
     anticaptcha.getBalance = util.promisify(anticaptcha.getBalance);
     anticaptcha.createGeeTestTask = util.promisify(anticaptcha.createGeeTestTask);
@@ -99,8 +71,10 @@ Apify.main(async () => {
     await Apify.setValue('OUTPUT', taskSolution);
     log.info('Solution is saved to OUTPUT.');
     log.info(`Solution printed:
-        ${taskSolution}
+        ${JSON.stringify(taskSolution)}
     `);
 
     log.info('Task finished.');
 });
+
+//TOTH: 3
