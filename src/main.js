@@ -34,7 +34,7 @@ Apify.main(async () => {
 
     log.info('Configuring anticapatcha task...');
 
-    anticaptcha.setWebsiteURL(websiteURL); //.split('?')[0]
+    anticaptcha.setWebsiteURL(websiteURL);
     anticaptcha.setWebsiteKey(gt);
     anticaptcha.setWebsiteChallenge(challenge);
     if (serverSubdomain)
@@ -76,5 +76,3 @@ Apify.main(async () => {
 
     log.info('Task finished.');
 });
-
-//TOTH: 3
